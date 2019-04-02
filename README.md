@@ -1,21 +1,23 @@
 LazyDictionary
 ==============
-[![Build Status](https://travis-ci.org/janrain/lazydict.png?branch=master)](https://travis-ci.org/janrain/lazydict) 
+[![Build Status](https://travis-ci.org/janrain/lazydict.png?branch=master)](https://travis-ci.org/janrain/lazydict)
 
 Lazily-evaluated dictionaries.
 
 Overview
 --------
 
-    from lazydict import LazyDictionary
-    lazy = LazyDictionary()
-    lazy['sum'] = lambda ld: ld['a'] + ld['b']
-    lazy['a'] = 1
-    lazy['b'] = 2
-    print lazy['sum']
-    # 3
+```python
+from lazydict import LazyDictionary
+lazy = LazyDictionary()
+lazy['sum'] = lambda ld: ld['a'] + ld['b']
+lazy['a'] = 1
+lazy['b'] = 2
+print lazy['sum']
+# 3
+```
 
-A `LazyDicitonary` behaves mostly like an ordinary `dict`, except:
+A `LazyDictionary` behaves mostly like an ordinary `dict`, except:
 
 * item values are frozen upon reading, and
 
@@ -32,9 +34,12 @@ These features allow values in the dictionary to be dependent on other values in
 the dictionary without regard to order of assignment.  It also allows lazily not
 executing unused code:
 
-    import tempfile
-    lazy = LazyDictionary()
-    lazy['temp'] = lambda: tempfile.mkdtemp()
+```python
+from lazydict import LazyDictionary
+import tempfile
+lazy = LazyDictionary()
+lazy['temp'] = lambda: tempfile.mkdtemp()
+```
 
 If `lazy['temp']` is never an R-value, `mkdtemp()` will never be called.
 
@@ -49,7 +54,9 @@ If a frozen value is updated, a `ConstantRedefinitionError` will be thrown.
 MutableLazyDictionary
 ---------------------
 
-    from lazydict import MutableLazyDictionary
+```python
+from lazydict import MutableLazyDictionary
+```
 
 A `MutableLazyDictionary` behaves mostly like a `LazyDictionary`, except that
 its item values are not frozen when they are read.
@@ -57,9 +64,13 @@ its item values are not frozen when they are read.
 Install
 -------
 
-    pip install --pre lazydict
+```sh
+pip install --pre lazydict
+```
 
 Testing
 -------
-    
-    python setup.py test
+
+```sh
+python setup.py test
+```

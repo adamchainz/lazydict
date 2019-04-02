@@ -2,7 +2,7 @@
 """
 Lazily-evaluated dictionaries
 
-A ``LazyDicitonary`` behaves mostly like an ordinary ``dict``, except:
+A ``LazyDictionary`` behaves mostly like an ordinary ``dict``, except:
 
 * item values are frozen upon reading, and
 
